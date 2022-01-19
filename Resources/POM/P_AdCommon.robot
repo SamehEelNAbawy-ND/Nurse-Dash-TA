@@ -2,15 +2,21 @@
 Library    SeleniumLibrary
 
 *** Variables ***
+
+
 #Related to Log In to Nurse Dash Website
-${Link}    https://admin-staging.nursedash.com
-${Browser}    chrome
-${UserName}    sameh
-${Password}    Sameh12345%
+${SandboxWeb}    https://admin-sandbox.nursedash.com/#/login
+${StagingWeb}    https://admin-staging.nursedash.com/#/login
+${Chrome_Browser}    chrome
+${FireFox_Browser}    fire fox
+${UserName_Sandbox}    Sameh
+${Password_Sandbox}    Sameh12345
+${UserName_Staging}    sameh
+${Password_Staging}    Sameh12345%
 
 ${UserName_LogIn}    //input[@name="username"]
 ${Password_LogIn}    //input[@id="password"]
-${SignInButton_LogIn}    //span[.="Sign in"]
+${SignInButton_LogIn}    //button//span[.="Sign in"]
 
 #Upper Bar Icons XPath
 ${SideBarIcon_Common}    //button[@aria-label="open drawer"]
@@ -51,12 +57,17 @@ ${LogOut}    //div//li[@tabindex="-1"]
 #Click on refresh page
 
 Log_In_NurseDash
-    open browser    ${Link}    ${Browser}
+    open browser    ${SandboxWeb}    ${Chrome_Browser}
     maximize browser window
-    #wait until element is visible    ${UserName_LogIn}
-    sleep    35s
-    input text    ${UserName_LogIn}  ${UserName}
-    input password    ${Password_LogIn}    ${Password}
+    #wait until element is visible  ${UserName_LogIn}
+    #wait until element is not visible    //*[@id="app"]/div/div/svg
+#    continue for loop if    [wait until page does not contain element    //*[@id="app"]/div/div/svg]    == True
+#    wait until page does not contain element    //*[@id="app"]/div/div/svg
+    #wait until page contains element    ${Password_LogIn}
+#    Sleep    35s
+#    input text    ${UserName_LogIn}  ${UserName}
+    wait until keyword succeeds    10000s    1s    input text    ${UserName_LogIn}  ${UserName_Sandbox}
+    input password    ${Password_LogIn}    ${Password_Sandbox}
     click element    ${SignInButton_LogIn}
 
 Select All Parameters From the table

@@ -1,7 +1,10 @@
 *** Settings ***
-Library    SelenumLibrary
+Library    SeleniumLibrary
+Resource    P_AdCommon.robot
 
 *** Variables ***
+${Create_Facility}    //div//a[@href="#/Facility/create"]
+
 # Table Sorting
 ${Id_Sorting}    //span//span[.="Id"]
 ${Name_Sorting}    //span//span[.="Name"]
@@ -35,14 +38,14 @@ ${CPR_AllowedQual_Main_Facility}    //ul//li[@data-value="COVID Single-Dose Vacc
 ${COVIDVaccine_AllowedQual_Main_Facility}    //ul//li[@data-value="COVID Vaccine"]
 ${COVIDNegative_AllowedQual_Main_Facility}    //ul//li[@data-value="COVID Negative"]
 ${Oakbend_AllowedQual_Main_Facility}    //ul//li[@data-value="Oakbend"]
-${MTF_AllowedQual_Main_Facility}    //ul//li[@data-value="MTF"]
+${MTF_AllowedQual_Main_Facility}    //li[@data-value="MTF"]
 ${LVN_AllowedQual_Main_Facility}    //ul//li[@data-value="LVN"]
 ${TNCC_AllowedQual_Main_Facility}    //ul//li[@data-value="TNCC"]
 ${PALS_AllowedQual_Main_Facility}    //ul//li[@data-value="PALS"]
 ${BLS_AllowedQual_Main_Facility}    //ul//li[@data-value="BLS"]
 ${ACLS_AllowedQual_Main_Facility}    //ul//li[@data-value="ACLS"]
 
-${Address_Main_Facility}    //input[@id="address"]
+${Address_Main_Facility}    //div//input[@id="address"]
 ${TimeZone_Main_Facility}    //input[@id="timezone"]
 ${LogIn_Main_Facility}    //input[@id="login"]
 ${Password_Main_Facility}    //input[@id="password"]
@@ -123,11 +126,13 @@ ${Main_Facility}    //div//a[@href="#/Facility/create"]
 ${Name_Main_Facility}    //div//input[@id="name"]
 ${ShortName_Main_Facility}    //div//input[@id="short_name"]
 
-${DropImage_Main_Facility}    # Need Following sibling tech in writing xpath
-${DropPDF_Main_Facility}    # Need Following sibling tech in writing xpath
+${DropImage_Main_Facility}    //div//input[@id="image"]
+${DropPDF_Main_Facility}    //div//input[@id="orientationMaterials"]
 
 ${AddEmail_Main_Facility}    //button[@class="MuiButtonBase-root MuiButton-root MuiButton-text button-add button-add-emailList MuiButton-textSizeSmall MuiButton-sizeSmall"]
+${InputEmail_Main_Facility}    //div//input[@id="emailList[0].email"]
 ${AddPhone_Main_Facility}    //button[@class="MuiButtonBase-root MuiButton-root MuiButton-text button-add button-add-phones MuiButton-textSizeSmall MuiButton-sizeSmall"]
+${InputPhone_Main_Facility}    //div//input[@id="phones[0].phone"]
 
 ${ShowForAllNurses_Main_Facility}    //span//input[@id="isOrientationMaterialsShowForAll"]
 
@@ -178,5 +183,40 @@ ${AllowMedicalExemption_Main_Facility}    //input[@id="covidMedicalExemption"]
 ${AllowReligiousExemption_Main_Facility}    //input[@id="covidReligiousExemption"]
 
 ${Save_Main_Facility}    //button[.="Save"]
+
+*** Keywords ***
+Create New Facility
+    [Arguments]    ${Name_NewFacility}    ${ShortName_NewFacility}    ${Image_NewFacility}    ${Pdf_NewFacility}    ${Email_NewFacility}    ${Phone_NewFacility}    ${Address_NewFacility}    ${LogIn_NewFacility}    ${Password_NewFacility}    ${Lat_NewFacility}    ${Lng_NewFacility}
+    Click Any Element    ${Create_Facility}
+    wait until page contains element    ${Name_Main_Facility}
+    input text    ${Name_Main_Facility}  ${Name_NewFacility}
+    input text    ${ShortName_Main_Facility}    ${ShortName_NewFacility}
+    choose file    ${DropImage_Main_Facility}    ${Image_NewFacility}
+    choose file    ${DropPDF_Main_Facility}    ${Pdf_NewFacility}
+    Click Any Element    ${ShowForAllNurses_Main_Facility}
+    Click Any Element    ${AddEmail_Main_Facility}
+    wait until page contains element    ${InputEmail_Main_Facility}
+    input text      ${InputEmail_Main_Facility}      ${Email_NewFacility}
+    Click Any Element    ${AddPhone_Main_Facility}
+    wait until page contains element    ${InputPhone_Main_Facility}
+    input text      ${InputPhone_Main_Facility}    ${Phone_NewFacility}
+    Click Any Element    ${AllowedQualifications_Main_Facility}
+    Click Any Element    ${COVIDVaccine_AllowedQual_Main_Facility}
+    Click Any Element    ${MTF_AllowedQual_Main_Facility}
+    Click Any Element    ${LVN_AllowedQual_Main_Facility}
+    click element at coordinates    ${AllowedQualifications_Main_Facility}    60    0
+    input text    ${Address_Main_Facility}    ${Address_NewFacility}
+    input text    ${LogIn_Main_Facility}    ${LogIn_NewFacility}
+    input text    ${Password_Main_Facility}    ${Password_NewFacility}
+    input text    ${Lat_Main_Facility}    ${Lat_NewFacility}
+    input text    ${Lng_Main_Facility}    ${Lng_NewFacility}
+    Click Any Element    ${SelectArea_Main_Facility}
+    click element at coordinates    ${SelectArea_Main_Facility}    60    0
+    Click Any Element    ${Houston_SelectArea_Main_Facility}
+    Click Any Element    ${SelectSegment_Main_Facility}
+    Click Any Element    ${HealthCare_SelectSeg_MAin_Facility}
+    Click on Specific Button    ${Save_Facility}
+    wait until keyword succeeds    10000s    1s    wait until page contains element    //p[.="${Name_NewFacility}"]
+
 
 

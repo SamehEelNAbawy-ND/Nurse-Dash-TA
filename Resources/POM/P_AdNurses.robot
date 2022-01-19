@@ -1,6 +1,5 @@
 *** Settings ***
-Library    SeleniumLibrary
-
+Resource    P_AdCommon.robot
 
 *** Variables ***
 
