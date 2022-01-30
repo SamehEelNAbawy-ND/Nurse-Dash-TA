@@ -3,6 +3,8 @@ Library    SeleniumLibrary
 Resource    P_AdCommon.robot
 
 *** Variables ***
+${Facility_Edit}    //a[@href="#/Facility/707"]
+
 ${Create_Facility}    //div//a[@href="#/Facility/create"]
 
 # Table Sorting
@@ -13,11 +15,11 @@ ${Location_Sorting}    //span//span[.="Location"]
 ${CreatedAt_Sorting}    //span//span[.="Created at"]
 
 # After Clicking on "Edit" Button
-${Main_Facility}    //div//a[@href="#/Facility/746"]
-${Rates_Facility}    //div//a[@href="#/Facility/746/1"]
-${Activity_Facility}    //div//a[@href="#/Facility/746/2"]
-${TimeVerifies_Facility}    //div//a[@href="#/Facility/746/3"]
-${Settings_Facility}    //div//a[@href="#/Facility/746/4"]
+${Main_Facility}    //div//a[@href="#/Facility/707"]
+${Rates_Facility}    //div//a[@href="#/Facility/707/1"]
+${Activity_Facility}    //div//a[@href="#/Facility/07/2"]
+${TimeVerifies_Facility}    //div//a[@href="#/Facility/707/3"]
+${Settings_Facility}    //div//a[@href="#/Facility/707/4"]
 ${Save_Facility}    //div//button[@aria-label="Save"]
 ${Delete_Facility}
 
@@ -79,6 +81,8 @@ ${AllowReligiousExemption_Main_Facility}    //input[@id="covidReligiousExemption
 # After Clicking on "Edit" and be in "Rates" Section
 
 ${Add_Rates_Facility}    //button[@class="MuiButtonBase-root MuiButton-root MuiButton-text button-add button-add-rates MuiButton-textSizeSmall MuiButton-sizeSmall"]
+${ShiftUnit1_Rates_Facility}    //div[@id="rates[0].unit"]
+${ShiftType1_Rates_Facility}    //div[@id="rates[0].type"]
 
 # After Clicking on "Edit" and be in "Activity" Section
 
@@ -218,5 +222,15 @@ Create New Facility
     Click on Specific Button    ${Save_Facility}
     wait until keyword succeeds    10000s    1s    wait until page contains element    //p[.="${Name_NewFacility}"]
 
+Edit Rates Of Facility
+    [Arguments]    ${Facility_Edit}    ${ShiftUnit1_Targeted}    ${ShiftType1_Targeted}
+    Click on SideBar Icons    ${Facilities}
+    Click Any Element    ${Facility_Edit}
+    Click Any Element    ${Rates_Facility}
+    click button    ${Add_Rates_Facility}
+    Choose from List    ${ShiftUnit1_Rates_Facility}    ${ShiftUnit1_Targeted}
+    sleep    1s
+    Choose from List    ${ShiftType1_Rates_Facility}    ${ShiftType1_Targeted}
+    click button    ${Save_Facility}
 
 

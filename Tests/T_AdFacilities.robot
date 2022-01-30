@@ -23,3 +23,7 @@ Create New Facility TC
     Create New Facility    ${Name_NewFacility}    ${ShortName_NewFacility}     ${Image_NewFacility}   ${Pdf_NewFacility}    ${Email_NewFacility}    ${Phone_NewFacility}    ${Address_NewFacility}    ${LogIn_NewFacility}    ${Password_NewFacility}    ${Lat_NewFacility}    ${Lng_NewFacility}
     close browser
 
+
+Edit Rates Of Facility    ${Facility_Edit}    ${ShiftUnit1_Targeted}    ${ShiftType1_Targeted}
+
+

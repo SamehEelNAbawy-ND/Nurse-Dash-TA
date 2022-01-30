@@ -86,7 +86,7 @@ Select All Parameters From the table
 
 Click on Specific Button
     [Arguments]    ${AnyButton}
-    wait until element is visible    ${AnyButton}
+    wait until keyword succeeds    10000s    1s   wait until element is visible    ${AnyButton}
     click button    ${AnyButton}
 
 Click on SideBar Icons
@@ -96,12 +96,19 @@ Click on SideBar Icons
 
 Click Any Element
     [Arguments]    ${AnyElement}
-    wait until page contains element    ${AnyELement}
+    wait until keyword succeeds    10000s    1s    wait until page contains element    ${AnyELement}
     click element    ${AnyELement}
 
 Click on Check Box ND Tables
     [Arguments]    ${ChkB_Page}
     Click Any Element    ${ChkB_Page}
+
+Choose from List
+    [Arguments]    ${TargetedList}    ${TargetedOption}
+    wait until keyword succeeds    10000s    1s  wait until page contains element    ${TargetedList}
+    click element    ${TargetedList}
+    wait until keyword succeeds    10000s    1s  wait until page contains element    ${TargetedOption}
+    click element    ${TargetedOption}
 
 Log Out NurseDash
     click button    ${LogOut}

@@ -13,7 +13,7 @@ ${RN_ShType}    //td//span[.="RN"]
 ${STNA_ShType}    //td//span[.="STNA"]
 ${Tech_ShType}    //td//span[.="Tech"]
 
-${CreateNewShiftType}    //a//span//span[.="Create"]
+${CreateNewShiftType}    //a[@href="#/FacilityType/create"]
 
 ${Name_Sort_ShiftTypes}    //span[@data-sort="name"]
 ${Description_Sort_ShiftTypes}    //span[@data-sort="description"]
@@ -36,10 +36,10 @@ Create New Shift Type
     wait until page contains element    ${Name_ShiftType}
     input text    ${Name_ShiftType}     ${Name_NewShiftType}
     input text    ${Description_ShiftType}      ${Description_NewShiftType}
-    click element    ${Save_ShiftType}
+    click button    ${Save_ShiftType}
 
 Check that New Shift Type Created
     [Arguments]    ${ShiftType_Checeked}
-    wait until page contains element    ${ShiftType_Checeked}
+    wait until keyword succeeds    10000s    1s    wait until page contains element    ${ShiftType_Checeked}
     page should contain element     ${ShiftType_Checeked}
 

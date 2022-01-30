@@ -3,10 +3,13 @@ Library    SeleniumLibrary
 Resource    P_AdCommon.robot
 
 *** Variables ***
+${ShiftNumber}
+
 ${SelectAll_ShiftUnit}    //span[@class="MuiButtonBase-root MuiIconButton-root jss968 MuiCheckbox-root MuiCheckbox-colorPrimary select-all MuiIconButton-colorPrimary"]//span//input[@class="jss971"]
 ${SelectSpecific_ShiftUnit}
 
-${Create_ShiftUnit}    //a[@href="#/ShiftUnit/create"]
+${Create_ShiftUnit}    //div//a[@href="#/ShiftUnit/create"]
+
 ${Export_ShiftUnit}    //button[@aria-label="Export"]
 ${Edit_SpecificShiftUnit}    //a[@href="#/ShiftUnit/${ShiftNumber}"]
 ${Delete_ShiftUnit}     # Need to get it by preceding or following sibilling
