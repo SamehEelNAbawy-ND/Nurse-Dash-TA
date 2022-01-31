@@ -220,7 +220,7 @@ Create New Facility
     Click Any Element    ${SelectSegment_Main_Facility}
     Click Any Element    ${HealthCare_SelectSeg_MAin_Facility}
     Click on Specific Button    ${Save_Facility}
-    wait until keyword succeeds    10000s    1s    wait until page contains element    //p[.="${Name_NewFacility}"]
+    wait until keyword succeeds    1000s    1s    wait until page contains element    //p[.="${Name_NewFacility}"]
 
 Edit Rates Of Facility
     [Arguments]    ${Facility_Edit}    ${ShiftUnit1_Targeted}    ${ShiftType1_Targeted}

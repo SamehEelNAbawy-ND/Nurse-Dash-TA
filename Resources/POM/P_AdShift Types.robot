@@ -40,6 +40,6 @@ Create New Shift Type
 
 Check that New Shift Type Created
     [Arguments]    ${ShiftType_Checeked}
-    wait until keyword succeeds    10000s    1s    wait until page contains element    ${ShiftType_Checeked}
+    wait until keyword succeeds    1000s    1s    wait until page contains element    ${ShiftType_Checeked}
     page should contain element     ${ShiftType_Checeked}
 

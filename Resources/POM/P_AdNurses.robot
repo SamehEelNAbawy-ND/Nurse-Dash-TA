@@ -109,6 +109,5 @@ Change Status
     [Arguments]    ${Status_NewNurse}
     Choose from List    ${Status_Edit_Main_Nurse}    ${Status_NewNurse}
 
-Delet Nurse
 
 

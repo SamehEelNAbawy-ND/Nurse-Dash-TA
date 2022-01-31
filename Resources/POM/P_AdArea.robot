@@ -46,7 +46,7 @@ Create a New Area
 
 Verify that Created Area is Exist
     [Arguments]    ${NewCreatedArea}
-    wait until page contains element      ${NewCreatedArea}
+    wait until keyword succeeds    1000s    1s  wait until page contains element      ${NewCreatedArea}
     page should contain element    ${NewCreatedArea}
 
 #Delete Specific Area

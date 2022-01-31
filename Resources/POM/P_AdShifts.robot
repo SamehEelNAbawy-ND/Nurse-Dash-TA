@@ -3,6 +3,9 @@ Library    SeleniumLibrary
 Resource   P_AdCommon.robot
 
 *** Variables ***
+${ShiftNumber}    229019
+${Specific_Shift}    //td//span[.="${ShiftNumber}"]
+
 # Main Information for facility we will test with
 ${FacilityName}    Sameh
 ${Unit}    //li[.="Hospice"]
@@ -94,7 +97,12 @@ Edit Specific Shift
 Delete a specific Shift
     [Arguments]    ${Shift_DeleteButton}
     wait until page contains element    ${Shift_DeleteButton}
-    Click Button Element    ${Shift_DeleteButton}
+    Click on Specific Button    ${Shift_DeleteButton}
+
+Clone Shift
+    [Arguments]
+    wait until page contains element  ${Specific_Shift}
+
 
 Select All Shifts in the page
     wait until page contains element    ${SelectAllCheckBox_Shifts}

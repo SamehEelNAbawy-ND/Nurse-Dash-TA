@@ -66,7 +66,7 @@ Log_In_NurseDash
     #wait until page contains element    ${Password_LogIn}
 #    Sleep    35s
 #    input text    ${UserName_LogIn}  ${UserName}
-    wait until keyword succeeds    10000s    1s    input text    ${UserName_LogIn}  ${UserName_Sandbox}
+    wait until keyword succeeds    1000s    1s    input text    ${UserName_LogIn}  ${UserName_Sandbox}
     input password    ${Password_LogIn}    ${Password_Sandbox}
     click element    ${SignInButton_LogIn}
 
@@ -86,7 +86,7 @@ Select All Parameters From the table
 
 Click on Specific Button
     [Arguments]    ${AnyButton}
-    wait until keyword succeeds    10000s    1s   wait until element is visible    ${AnyButton}
+    wait until keyword succeeds    1000s    1s   wait until element is visible    ${AnyButton}
     click button    ${AnyButton}
 
 Click on SideBar Icons
@@ -96,7 +96,7 @@ Click on SideBar Icons
 
 Click Any Element
     [Arguments]    ${AnyElement}
-    wait until keyword succeeds    10000s    1s    wait until page contains element    ${AnyELement}
+    wait until keyword succeeds    1000s    1s    wait until page contains element    ${AnyELement}
     click element    ${AnyELement}
 
 Click on Check Box ND Tables
@@ -105,9 +105,9 @@ Click on Check Box ND Tables
 
 Choose from List
     [Arguments]    ${TargetedList}    ${TargetedOption}
-    wait until keyword succeeds    10000s    1s  wait until page contains element    ${TargetedList}
+    wait until keyword succeeds    1000s    1s  wait until page contains element    ${TargetedList}
     click element    ${TargetedList}
-    wait until keyword succeeds    10000s    1s  wait until page contains element    ${TargetedOption}
+    wait until keyword succeeds    1000s    1s  wait until page contains element    ${TargetedOption}
     click element    ${TargetedOption}
 
 Log Out NurseDash
