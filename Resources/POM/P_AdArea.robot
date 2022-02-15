@@ -11,6 +11,7 @@ ${Name_Area}    //span[@data-sort="name"]
 ${CreatedAt_Area}    //a[@href="#/Area/create"]
 
 ${Id_Filter}    //li[@data-key="id"]
+${DeleteButton_Area}
 
 # After Clicking on create to create a new Area
 ${Name_CreateArea}    //div//input[@id="name"]
@@ -49,7 +50,15 @@ Verify that Created Area is Exist
     wait until keyword succeeds    1000s    1s  wait until page contains element      ${NewCreatedArea}
     page should contain element    ${NewCreatedArea}
 
-#Delete Specific Area
+Edit Specific Area
+    [Arguments]  ${Specific_Edit_Area}
+    Click Any Element    ${Specific_Edit_Area}
+    wait until page contains element    ${Name_CreateArea}
+   # clear element text    ${Name_NArea}
 
+#Delete Specific Area
+#    [Arguments]    ${Specific_Delete_Area}
+#    Click Any Element    ${DeleteButton_Area}
+#    wait until element does not contain    ${Specific_Delete_Area}
 
 
