@@ -1,0 +1,10 @@
+This Demo Contain 
+1- Create New Area and Verify that New Area is Created and added to table 
+2- Create New Facility with all parameters we Use to Create a facility
+  Ex { Name, Short Name, Add Image , Allowed Qualifications ,Shift units ......} and Save this facility 
+  Then Check that new facility created is added to Facilities Table 
+3- Create New Shift Unit and Verify that new Shift unit created is added to Shift Units table 
+4- Create New Shift Type and Verify that new Shift Type created is added to Shift Types table 
+5- Create New Nurse with all parameters we Use to Create a nurse 
+  EX { Phone number, Name ....} 
+6- Create New Document and Verify that new Shift Type created is added to Shift Types table 
